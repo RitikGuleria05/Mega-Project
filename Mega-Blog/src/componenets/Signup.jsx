@@ -16,7 +16,7 @@ function Signup() {
     const create = async (data) => {
         setError("")
         try {
-            await authService.CreateAccount(data)
+            const userData = await authService.CreateAccount(data)
             if (userData) {
                 const userData = await authService.getCurrentUser()
                 if (userData) dispatch(login(userData));
@@ -76,10 +76,9 @@ function Signup() {
                                 required: true,
                             })}
                         />
-                        <Button
-                            type="submit"
-                            className="w-full"
-                        >Create Account</Button>
+                        <Button type="submit" className="w-full bg-blue-600">
+                            Create Account
+                        </Button>
                     </div>
                 </form>
             </div>
